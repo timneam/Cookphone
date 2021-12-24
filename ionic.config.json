@@ -1,0 +1,7 @@
+{
+  "name": "Cookphone",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

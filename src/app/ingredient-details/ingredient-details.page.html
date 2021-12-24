@@ -1,0 +1,35 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button>
+            </ion-back-button>
+        </ion-buttons>
+        <ion-title>Ingredient and its Quantity</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding" style="text-align:center">
+
+    <div align="center">
+        <ion-img style="width: 350px; height: 350px;" src="./assets/ingredient.png"></ion-img>
+    </div>
+
+    <br>
+
+    <form [formGroup]="myForm">
+        <ion-item>
+            <ion-label position="floating">Ingredient Name</ion-label>
+            <ion-input type="text" formControlName="ingredient" value="{{ ingredient_details.ingredient }}"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label position="floating"> Quantity </ion-label>
+            <ion-input type="text" formControlName="quantity" value="{{ ingredient_details.quantity }}"></ion-input>
+        </ion-item>
+        <ion-row>
+            <ion-col>
+                <ion-button (click)="update()">Update</ion-button>
+                <ion-button (click)="delete()">Delete</ion-button>
+            </ion-col>
+        </ion-row>
+    </form>
+</ion-content>

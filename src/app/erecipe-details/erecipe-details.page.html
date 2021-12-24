@@ -1,0 +1,41 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button>
+            </ion-back-button>
+        </ion-buttons>
+        <ion-title>{{ erecipe_details.Name }}</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-list>
+        <ion-item>
+            <h2>Duration:</h2>
+        </ion-item>
+        <ion-item>
+            {{ erecipe_details.Duration }}
+        </ion-item>
+        <br>
+        <ion-item>
+            <h2>Ingredients:</h2>
+        </ion-item>
+        <ion-item>
+            {{ erecipe_details.Ingredients }}
+        </ion-item>
+        <br>
+        <ion-item>
+            <h2>Steps:</h2>
+        </ion-item>
+        <ion-item>
+            {{ erecipe_details.Steps }}
+        </ion-item>
+        <br>
+        <ion-item>
+            <h2>Nutrional Values:</h2>
+        </ion-item>
+        <ion-item>
+            {{ erecipe_details.nv }}
+        </ion-item>
+    </ion-list>
+</ion-content>

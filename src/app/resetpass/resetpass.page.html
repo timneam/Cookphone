@@ -1,0 +1,26 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button>
+            </ion-back-button>
+        </ion-buttons>
+        <ion-title>Reset Password</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content style="text-align: center;">
+    <br>
+    <h2>Forgot your password?</h2>
+    <p> Don't worry, just send your email to reset password!</p>
+    <form [formGroup]="myForm">
+        <ion-item>
+            <ion-label position="floating">Email</ion-label>
+            <ion-input type="text" formControlName="email"></ion-input>
+        </ion-item>
+        <ion-row>
+            <ion-col>
+                <ion-button (click)="sendPassword()">Send Email</ion-button>
+            </ion-col>
+        </ion-row>
+    </form>
+</ion-content>

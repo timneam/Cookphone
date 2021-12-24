@@ -1,0 +1,29 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title>My Recipes</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+    <ion-fab horizontal="end" vertical="bottom" slot="fixed">
+        <ion-fab-button color="danger" [routerLink]="['/nrecipe']">
+            <ion-icon name="add"></ion-icon>
+        </ion-fab-button>
+    </ion-fab>
+
+    <ion-searchbar showcancelbutton="" placeholder="Search My Recipes" (ionInput)="filterList($event)"></ion-searchbar>
+
+    <ion-list>
+        <ion-item button *ngFor="let mrecipe of mrecipes" [routerLink]="['/mrecipe-details', mrecipe.docid]">
+            <ion-avatar slot="start">
+                <img src="/assets/food.jpg">
+            </ion-avatar>
+            <ion-label>
+                <h3> Recipe Name : {{ mrecipe.recipe_name }}</h3>
+                <p> Duration : {{ mrecipe.duration }}</p>
+            </ion-label>
+        </ion-item>
+    </ion-list>
+
+</ion-content>

@@ -1,0 +1,29 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title>Explore</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+    <ion-searchbar showcancelbutton="" placeholder="Search Recipes" (ionInput)="filterList($event)"></ion-searchbar>
+
+    <p style="text-align: center;">More Recipes From: <button ion-button block (click)="open()">More Recipes</button></p>
+
+    <ion-grid>
+        <ion-row no-padding>
+            <ion-col col-6 *ngFor="let erecipe of erecipes" [routerLink]="['/erecipe-details', erecipe.docid]">
+                <ion-card style="width: 150px; height: 300px;">
+                    <ion-card-header style="text-align: center;">
+                        <ion-img style="width: 100px; height: 100px; margin-left: 7px;" src="./assets/food.jpg"></ion-img>
+                        <ion-card-title> {{ erecipe.Name }}</ion-card-title>
+                        <ion-card-content>
+                            {{ erecipe.Duration }}
+                        </ion-card-content>
+                    </ion-card-header>
+                </ion-card>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+
+</ion-content>

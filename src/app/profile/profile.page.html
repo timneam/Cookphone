@@ -1,0 +1,68 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title>Profile</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content style="text-align:center">
+
+    <ion-avatar style="margin-left:100px; margin-top: 50px; width: 200px; height: 200px;">
+        <img src={{photo}}>
+        <img [src]="capturedSnapURL" />
+    </ion-avatar>
+
+    <ion-button (click)="takeSnap()">
+        Take Picture
+    </ion-button>
+
+    <ion-card-content>
+        <input id="uploadBtn" type="file" class="upload" style="width: 93px;" (change)="uploadFile($event.target.files)" />
+    </ion-card-content>
+
+    <ion-card class="ion-text-center" *ngIf="isUploading && !isUploaded">
+        <ion-card-header>
+            <ion-card-title>Selected File:<b>{{ fileName }}</b></ion-card-title>
+        </ion-card-header>
+
+        <ion-card-content>
+            <div *ngIf="percentage | async as pct">
+                Progress: {{ pct | number }}%
+                <ion-progress-bar value="{{ pct / 100 }}"></ion-progress-bar>
+            </div>
+            <div *ngIf="snapshot | async as snap">
+                File Size: {{ snap.totalBytes | fileSizePipe }} Transfered: {{ snap.bytesTransferred | fileSizePipe }}
+                <div *ngIf="snapshot && snap.bytesTransferred != snap.totalBytes">
+                    <ion-button color="warning" size="small" (click)="task.pause()" class="button is-warning">Pause</ion-button>
+                    <ion-button size="small" (click)="task.resume()" class="button is-info">Resume</ion-button>
+                    <ion-button color="danger" size="small" (click)="task.cancel()" class="button is-danger">Cancel</ion-button>
+                </div>
+            </div>
+        </ion-card-content>
+    </ion-card>
+
+    <br>
+
+    <form [formGroup]="myForm">
+        <ion-item>
+            <ion-label position="floating">Change email</ion-label>
+            <ion-input type="text" formControlName="new_email" placeholder="{{userEmail}}"></ion-input>
+        </ion-item>
+        <br>
+        <ion-item>
+            <ion-label position="floating "> Current Password </ion-label>
+            <ion-input type="password" formControlName="current_password" placeholder="Current Password"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label position="floating "> Change Password </ion-label>
+            <ion-input type="password" formControlName="new_password" placeholder="New Password"></ion-input>
+        </ion-item>
+        <ion-row>
+            <ion-col>
+                <ion-button (click)="updateEmailOrPassword() ">Update</ion-button>
+            </ion-col>
+        </ion-row>
+    </form>
+
+    <ion-button (click)="logout() ">Log out</ion-button>
+
+</ion-content>
